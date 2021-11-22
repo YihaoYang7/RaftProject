@@ -1,6 +1,6 @@
 package raft.role;
 
-abstract class AbstractNodeRole
+public abstract class AbstractNodeRole
 {
     protected final RoleName name;
     protected final int term;
@@ -17,4 +17,9 @@ abstract class AbstractNodeRole
     }
 
     public abstract void cancelTimeoutOrTask();
+
+    public int getTerm()
+    {
+        return term;
+    }
 }

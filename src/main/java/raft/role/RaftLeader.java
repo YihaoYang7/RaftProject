@@ -15,7 +15,7 @@ public class RaftLeader extends AbstractNodeRole
     @Override
     public void cancelTimeoutOrTask()
     {
-
+        logReplicationTask.cancel();
     }
 
     @Override

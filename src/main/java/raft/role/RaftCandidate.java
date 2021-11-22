@@ -22,7 +22,7 @@ public class RaftCandidate extends AbstractNodeRole
     @Override
     public void cancelTimeoutOrTask()
     {
-
+        electionTimeout.cancel();
     }
 
     public int getVoteNumber()
