@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO"  strict="true"
+               name="XMLConfigTest" packages="org.apache.logging.log4j.test">
+
+    <!-- 定义3个属性供后面使用-->
+    <Properties>
+        <Property name="log-root-path">C:/Application/Codes/Java/Raft/RaftLog</Property>
+    </Properties>
+    <Filter type="ThresholdFilter" level="INFO" />
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- 添加一个Appder
+        fileName ：文件的位置
+        filePattern ：文件备份时的名字
+        <Layout>  :表示日志的打印格式
+        <Policies>:表示备份策略
+         -->
+        <Appender type="File" name="node1-config"
+                  fileName="${log-root-path}/node1/node1.log">
+            <Layout type="PatternLayout">
+                <Pattern>[node1] %d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+        </Appender>
+        <Appender type="File" name="node2-config"
+                  fileName="${log-root-path}/node2/node2.log">
+            <Layout type="PatternLayout">
+                <Pattern>[node1] %d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+        </Appender>
+        <Appender type="File" name="node3-config"
+                  fileName="${log-root-path}/node3/node3.log">
+            <Layout type="PatternLayout">
+                <Pattern>[node1] %d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+        </Appender>
+        <Appender type="File" name="node4-config"
+                  fileName="${log-root-path}/node4/node4.log">
+            <Layout type="PatternLayout">
+                <Pattern>[node1] %d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+        </Appender>
+        <Appender type="File" name="node5-config"
+                  fileName="${log-root-path}/node5/node5.log">
+            <Layout type="PatternLayout">
+                <Pattern>[node1] %d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+        </Appender>
+
+        <!--<Appender type="RollingFile" name="front-event-data"
+                  fileName="${front-event-data}/front-event-data.log"
+                  filePattern="${front-event-data}/front-event-data-%d{yyyy-MM-dd}-%i.log">
+            <Layout type="PatternLayout">
+                <Pattern>[front-event-data] %-d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <DefaultRolloverStrategy max="60"/>
+                &lt;!&ndash;<SizeBasedTriggeringPolicy size="64MB"></SizeBasedTriggeringPolicy>
+                    <DefaultRolloverStrategy>20</DefaultRolloverStrategy>&ndash;&gt;
+            </Policies>
+        </Appender>
+
+        <Appender type="RollingFile" name="front-event-data-test"
+                  fileName="${front-event-data-test}/front-event-data-test.log"
+                  filePattern="${front-event-data-test}/front-event-data-test-%d{yyyy-MM-dd}-%i.log">
+            <Layout type="PatternLayout">
+                <Pattern>[front-event-test] %d{HH:mm:ss SSS} %5p (%c:%L) - %m%n</Pattern>
+            </Layout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <DefaultRolloverStrategy max="60"/>
+                &lt;!&ndash;<SizeBasedTriggeringPolicy size="64MB"></SizeBasedTriggeringPolicy>
+                    <DefaultRolloverStrategy>20</DefaultRolloverStrategy>&ndash;&gt;
+            </Policies>
+        </Appender>-->
+    </Appenders>
+
+    <Loggers>
+        <Logger name="node1" level="info" additivity="false">
+            <AppenderRef ref="node1-config" />
+        </Logger>
+        <Logger name="node2" level="info" additivity="false">
+            <AppenderRef ref="node1-config" />
+        </Logger>
+        <Logger name="node3" level="info" additivity="false">
+            <AppenderRef ref="node1-config" />
+        </Logger>
+        <Logger name="node4" level="info" additivity="false">
+            <AppenderRef ref="node1-config" />
+        </Logger>
+        <Logger name="node5" level="info" additivity="false">
+            <AppenderRef ref="node1-config" />
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+
+</Configuration>
